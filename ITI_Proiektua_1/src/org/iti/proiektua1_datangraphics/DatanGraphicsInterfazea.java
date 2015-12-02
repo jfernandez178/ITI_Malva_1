@@ -20,6 +20,10 @@ public class DatanGraphicsInterfazea extends JFrame{
 		panel.add(lblNewLabel_1, BorderLayout.CENTER);
 		
 		setSize(600, 600);
+		
+		//TODO GEro kendu probak egiteko bakarrik
+		DatanGraphicsLogika l = new DatanGraphicsLogika();
+		l.getKodeaString();
 	}
 
 }
