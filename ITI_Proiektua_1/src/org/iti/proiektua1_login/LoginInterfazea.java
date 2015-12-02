@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
@@ -28,7 +30,26 @@ public class LoginInterfazea extends JFrame implements ActionListener{
 	
 	
 	public static void main(String[] args) {
+		sistemarenLookAndFeel();
 		LoginInterfazea l = new LoginInterfazea();
+	}
+	
+	//Erabiltzen ari garen sistemaren itxura hartzen du programaren interfazeak
+	private static void sistemarenLookAndFeel(){
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}catch (UnsupportedLookAndFeelException e) {
+		       // handle exception
+	    }
+	    catch (ClassNotFoundException e) {
+	       // handle exception
+	    }
+	    catch (InstantiationException e) {
+	       // handle exception
+	    }
+	    catch (IllegalAccessException e) {
+	       // handle exception
+	    } 
 	}
 	
 	
