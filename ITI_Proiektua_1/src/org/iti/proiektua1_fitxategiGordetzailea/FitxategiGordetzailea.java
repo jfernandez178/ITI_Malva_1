@@ -1,15 +1,21 @@
 package org.iti.proiektua1_fitxategiGordetzailea;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+
 public class FitxategiGordetzailea {
 	
 	private static FitxategiGordetzailea nireFitxategiGordetzailea = null;
 	
-	//Fitxategiaren path-a gordeko duen aldagaia
-	private String fitxategiarenPatha;
+	//Erabiltzaile bakoitzaren fitxategiaren path-ak gordeko duen aldagaia
+	private static HashMap<String, String> fitxategiarenPatha;
 	
 	private FitxategiGordetzailea(){
 		
-		fitxategiarenPatha = null;
+		fitxategiarenPatha = new HashMap<String, String>();
 		
 		
 	}
@@ -25,27 +31,96 @@ public class FitxategiGordetzailea {
 		
 	}
 	
+
+	//Erabiltzaileak informazioa gordetzeko fitxategi bat esleituta daukan edo ez jakiteko emtodoa da
+	public boolean fitxategiaEsleitutaDauka(String username){
+		
+		//Emaitza jasotzeko aldagaia
+		boolean badauka = true;
+		
+		//Fitxategiaren patha gordetzen duen aldagaia null bada, ez dauka esleituta
+		if(fitxategiarenPatha.get(username) == null){
+			badauka = false;
+		}
+				
+		return badauka;
+	}
+	
+		
+		
+		
+	private boolean fitxategiaExistitzenAlDa(String path, String fitxategia){
+		
+		//Fitxategia existitzen den ala ez jakiteko kodea
+		boolean existitzenDa = false;
+		
+		//Path-a fitxategiarekin lotzen da ikusteko ea existitzen den edo ez
+		String fitxategiaPatharekin = path + "/" + fitxategia;
+		
+		//Fitxategia existitzen den edo ez ikusten da
+		File file = new File(fitxategiaPatharekin);
+		
+        if (file.exists()){
+            existitzenDa = true;
+            
+        }
+        
+		
+		return existitzenDa;
+	}
+	
 	
 	//Fitxategia zein tokitan gordeko den adieraziko duen path-a
-	public boolean fitxategiaGordetzekoDirektorioaEsleitu(String path){
+	public boolean fitxategiaGordetzekoDirektorioaEsleitu(String path, String fitxategiIzena, String username){
 		
 		//Fitxategiaren path-a ondo esleitu dela adierazten duen aldagia
 		boolean ondoEsleituDa = false;
 		
 		//TODO:
-		
+		//Fitxategia existitzen ez baldin bada
+		if(!fitxategiaExistitzenAlDa(path, fitxategiIzena)){
+			
+			//Path-a aldagai pribatuan gordeko da, dagokion erabiltzaile-izenari lotuta
+			fitxategiarenPatha.put(username, path + "/" + fitxategiIzena);
+			ondoEsleituDa = true;
+		}
+					
+			
 		return ondoEsleituDa;
 		
 	}
 	
 	
 	//Fitxategi batetan infomazioa gordetzeko erabiliko den metodoa
-	public boolean fitxategianGorde(String textua){
+	public boolean fitxategianGorde(String textua, String username){
 		
 		//Ondo gorde den edo ez adierazteko aldagaia
 		boolean ondoGordeDa = false;
 		
-		//TODO:
+		
+		//Fitxategia eskuratzen da
+		File fitxategia = new File(fitxategiarenPatha.get(username));
+		
+		//Fitxategia existitzen den konprobatzen da, badaezpada
+		if(fitxategia.exists()){
+
+			//Textua gordetzen da fitxategian
+			BufferedWriter bw;
+			
+			try {
+				bw = new BufferedWriter(new FileWriter(fitxategia));
+				bw.write(textua);
+			    bw.close();
+			}
+			
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    
+		    
+			ondoGordeDa = true;
+		}	
 		
 		return ondoGordeDa;
 		

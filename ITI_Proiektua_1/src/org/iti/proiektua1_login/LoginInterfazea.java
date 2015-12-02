@@ -167,7 +167,7 @@ public class LoginInterfazea extends JFrame implements ActionListener{
 					
 					System.out.println("Ondo logeatu da!");
 					loginZuzena = true;
-					//TODO: Sesioa ireki
+					//TODO: Sesioa ireki eta erabiltzaileizena bidali parametro bezala fitxategietan gordetzeko jakiteko
 					
 				}
 							
