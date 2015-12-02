@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import org.iti.proiektua1_datangraphics.DatanGraphicsInterfazea;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
@@ -189,7 +192,9 @@ public class LoginInterfazea extends JFrame implements ActionListener{
 					System.out.println("Ondo logeatu da!");
 					loginZuzena = true;
 					//TODO: Sesioa ireki eta erabiltzaileizena bidali parametro bezala fitxategietan gordetzeko jakiteko
-					
+					//TODO Aldatu bi aukerak agertzeko
+					DatanGraphicsInterfazea datanGraphics = new DatanGraphicsInterfazea();
+					datanGraphics.setVisible(true);
 				}
 							
 				
