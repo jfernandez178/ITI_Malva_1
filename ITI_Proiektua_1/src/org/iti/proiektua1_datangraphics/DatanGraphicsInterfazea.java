@@ -23,7 +23,8 @@ public class DatanGraphicsInterfazea extends JFrame{
 		
 		//TODO GEro kendu probak egiteko bakarrik
 		DatanGraphicsLogika l = new DatanGraphicsLogika();
-		l.getKodeaString();
+		l.getAzalpenaString();
+		l.kodeaExekutatu();
 	}
 
 }
