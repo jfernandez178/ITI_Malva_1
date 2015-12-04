@@ -18,11 +18,13 @@ public class E1Gr {
 
    public E1Gr(){
       DatanGraphics.openWorkstation(getClass().getName(), "E1Gr.ps");
+      //separatu
       DatanGraphics.setFormat(0., 0.);
       DatanGraphics.setWindowInComputingCoordinates(-10, 10, 0., .5);
       DatanGraphics.setWindowInWorldCoordinates(0., 1.414, 0., 1.);
       DatanGraphics.setViewportInWorldCoordinates(0.25, 1.35, 0.2, 0.8);
       DatanGraphics.chooseColor(2);
+      //separatu
 // draw frame (given by window in WC)
       DatanGraphics.setBigClippingWindow();
       DatanGraphics.drawFrame();
@@ -32,18 +34,22 @@ public class E1Gr {
       DatanGraphics.drawScaleX("x");
       DatanGraphics.drawScaleY("f(x)");
       DatanGraphics.chooseColor(5);
+      //separatu
       DatanGraphics.drawCaption(0., "f(x)=(2&ps^2#@)^-1/2#exp(-(x-a)^2#/2&s^2#@)");
       DatanGraphics.setSmallClippingWindow();
       for(int i = 0; i < 201; i++){
          tx[i] = -10. + (double)i * 0.1;
          ty[i] = StatFunct.standardNormal(tx[i]);
       }
+      //separatu
       DatanGraphics.chooseColor(1);
       DatanGraphics.drawPolyline(tx, ty);
+      //separatu
       for(int i = 0; i < 201; i++){
          tx[i] = -10. + (double)i * 0.1;
          ty[i] = StatFunct.normal(tx[i], 2., 3.);
       }
+      //separatu
       DatanGraphics.drawBrokenPolyline(1, 1., tx, ty);
  // compute and draw short straight continuous polyline
       lx[0] = -8.;
@@ -61,6 +67,7 @@ public class E1Gr {
       DatanGraphics.drawBrokenPolyline(1, 1., lx, ly);
 // place text to its right
       DatanGraphics.chooseColor(4);
+      //separatu
       DatanGraphics.drawText(-4.5, 0.3, 1., "a=2, &s=3");
       DatanGraphics.closeWorkstation();
    }

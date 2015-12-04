@@ -1,1 +1,20 @@
-The program generates the simple plot. It opens the workstation and de?nes the different coordinate systems. The outer frame is drawn (enclosing the section of the world coordinate system to be displayed) and the inner frame (the boudary of the computing coordinate system). Next, the lettered scales for abswcissa and ordinate are produced as is a caption for the plot. Now, the color index is changed. In a short loop a total of 201 coordinate pairs (xi,y i) are computed with xi =-10,-9.9,-9.8,...,10 and yi =f(x i). The function f(x)is the probability density of the standardized normal distribution. A polyline, de?ned by these pairs is drawn. In a second loop the points for a polyline are computed which correspond to a normal distribution with with mean a =2 and standard deviation s =3. That polyline is represented as a broken line. Finally, two short straight lines are displayed in the upper left corner of the plot (one as a solid line and one as a dashed line). To the right each of these polylines a short text is displayed, indicating the parameters of the Gaussians displayed as solid and dashed curves, respectively. Before termination of the program the workstation is closed. 
+The program generates the simple plot. It opens the workstation and de?nes the different coordinate systems.
+//separatu
+Now, the color index is changed.
+//separatu
+The outer frame is drawn (enclosing the section of the world coordinate system to be displayed) and the inner frame (the boudary of the computing coordinate system).
+Next, the lettered scales for abswcissa and ordinate are produced as is a caption for the plot.
+//separatu
+In a short loop a total of 201 coordinate pairs (xi,y i) are computed with xi =-10,-9.9,-9.8,...,10 and yi =f(x i).
+The function f(x)is the probability density of the standardized normal distribution.
+//separatu
+A polyline, de?ned by these pairs is drawn.
+//separatu
+In a second loop the points for a polyline are computed which correspond to a normal distribution with with mean a =2 and standard deviation s =3.
+//separatu
+That polyline is represented as a broken line.
+//separatu
+Finally, two short straight lines are displayed in the upper left corner of the plot (one as a solid line and one as a dashed line).
+To the right each of these polylines a short text is displayed, indicating the parameters of the Gaussians displayed as solid and dashed curves, respectively.
+//separatu
+Before termination of the program the workstation is closed. 

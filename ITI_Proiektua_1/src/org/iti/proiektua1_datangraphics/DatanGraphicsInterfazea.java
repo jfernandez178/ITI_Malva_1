@@ -25,6 +25,11 @@ public class DatanGraphicsInterfazea extends JFrame{
 		DatanGraphicsLogika l = new DatanGraphicsLogika();
 		l.getAzalpenaString();
 		l.kodeaExekutatu();
+		while(!l.hurrengoa()){
+			System.out.println("----------------------------");
+			System.out.println(l.getKodeaString());
+			System.out.println(l.getAzalpenaString());
+		}
 	}
 
 }
