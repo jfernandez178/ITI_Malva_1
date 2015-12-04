@@ -57,6 +57,7 @@ public class E1Gr {
       ly[0] = 0.4;
       ly[1] = 0.4;
       DatanGraphics.drawPolyline(lx, ly);
+      //separatu
 // place text to the right of short polyline
       DatanGraphics.chooseColor(3);
       DatanGraphics.drawText(-4.5, 0.4, 1., "a=0, &s=1");

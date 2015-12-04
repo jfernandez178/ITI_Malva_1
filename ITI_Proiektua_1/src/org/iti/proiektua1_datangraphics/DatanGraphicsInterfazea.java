@@ -30,6 +30,9 @@ public class DatanGraphicsInterfazea extends JFrame{
 			System.out.println(l.getKodeaString());
 			System.out.println(l.getAzalpenaString());
 		}
+		System.out.println("----------------------------");
+		System.out.println(l.getKodeaString());
+		System.out.println(l.getAzalpenaString());
 	}
 
 }

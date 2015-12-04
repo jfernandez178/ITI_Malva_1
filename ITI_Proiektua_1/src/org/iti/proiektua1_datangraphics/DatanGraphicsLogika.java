@@ -25,6 +25,10 @@ public class DatanGraphicsLogika {
 		kodea = zatiakSeparatu(kodeOsoa);
 		azalpenOsoa = getStringFitxategitik("E1Gr.txt");
 		azalpena = zatiakSeparatu(azalpenOsoa);
+		
+		//Separatu kendu
+		azalpenOsoa = azalpenOsoa.replaceAll("//separatu", "");
+		kodeOsoa = kodeOsoa.replaceAll("//separatu", "");
 	}
 	
 	/**
