@@ -3,6 +3,7 @@ package org.iti.proiektua1_datangraphics;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import javax.swing.JSplitPane;
@@ -73,7 +74,8 @@ public class DatanGraphicsInterfazea extends JFrame{
 		
 		textAreaCodigo = new JTextArea();
 		textAreaCodigo.setLineWrap(true);
-		panel_2.add(textAreaCodigo, BorderLayout.CENTER);
+		JScrollPane scroll1 = new JScrollPane(textAreaCodigo);
+		panel_2.add(scroll1, BorderLayout.CENTER);
 		
 		JPanel panel_3 = new JPanel();
 		panel_1.add(panel_3);
@@ -86,7 +88,8 @@ public class DatanGraphicsInterfazea extends JFrame{
 		
 		textAreaExplicacion = new JTextArea();
 		textAreaExplicacion.setLineWrap(true);
-		panel_3.add(textAreaExplicacion, BorderLayout.CENTER);
+		JScrollPane scroll2 = new JScrollPane(textAreaExplicacion);
+		panel_3.add(scroll2, BorderLayout.CENTER);
 		
 
 		try {
