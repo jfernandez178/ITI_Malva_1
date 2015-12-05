@@ -10,6 +10,11 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 public class DatanGraphicsInterfazea extends JFrame{
+	
+	private DatanGraphicsLogika datanGraphicsLogika;
+	private JTextArea textAreaCodigo;
+	private JTextArea textAreaExplicacion;
+	
 	public DatanGraphicsInterfazea() {
 		
 		setSize(600, 600);
@@ -19,11 +24,11 @@ public class DatanGraphicsInterfazea extends JFrame{
 		getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnNewButton = new JButton("Salir");
-		panel.add(btnNewButton, BorderLayout.WEST);
+		JButton btnSalirAtras = new JButton("Salir");
+		panel.add(btnSalirAtras, BorderLayout.WEST);
 		
-		JButton btnNewButton_1 = new JButton("Siguiente");
-		panel.add(btnNewButton_1, BorderLayout.CENTER);
+		JButton btnSiguiente = new JButton("Siguiente");
+		panel.add(btnSiguiente, BorderLayout.CENTER);
 		
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.CENTER);
@@ -36,8 +41,8 @@ public class DatanGraphicsInterfazea extends JFrame{
 		JLabel lblNewLabel = new JLabel("C\u00F3digo:");
 		panel_2.add(lblNewLabel, BorderLayout.NORTH);
 		
-		JTextArea textArea = new JTextArea();
-		panel_2.add(textArea, BorderLayout.CENTER);
+		textAreaCodigo = new JTextArea();
+		panel_2.add(textAreaCodigo, BorderLayout.CENTER);
 		
 		JPanel panel_3 = new JPanel();
 		panel_1.add(panel_3);
@@ -46,21 +51,18 @@ public class DatanGraphicsInterfazea extends JFrame{
 		JLabel lblNewLabel_1 = new JLabel("Explicaci\u00F3n:");
 		panel_3.add(lblNewLabel_1, BorderLayout.NORTH);
 		
-		JTextArea textArea_1 = new JTextArea();
-		panel_3.add(textArea_1, BorderLayout.CENTER);
+		textAreaExplicacion = new JTextArea();
+		panel_3.add(textAreaExplicacion, BorderLayout.CENTER);
 		
-		//TODO GEro kendu probak egiteko bakarrik
-		DatanGraphicsLogika l = new DatanGraphicsLogika();
-		l.getAzalpenaString();
-		l.kodeaExekutatu();
-		while(!l.hurrengoa()){
-			System.out.println("----------------------------");
-			System.out.println(l.getKodeaString());
-			System.out.println(l.getAzalpenaString());
-		}
-		System.out.println("----------------------------");
-		System.out.println(l.getKodeaString());
-		System.out.println(l.getAzalpenaString());
+
+		datanGraphicsLogika = new DatanGraphicsLogika();
+		datuakKargatu();
+	}
+	
+	
+	private void datuakKargatu(){
+		textAreaCodigo.setText(datanGraphicsLogika.getKodeaString());
+		textAreaExplicacion.setText(datanGraphicsLogika.getAzalpenaString());
 	}
 
 }
