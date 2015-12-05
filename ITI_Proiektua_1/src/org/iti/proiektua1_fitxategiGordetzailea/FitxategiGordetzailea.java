@@ -55,7 +55,7 @@ public class FitxategiGordetzailea {
 		boolean existitzenDa = false;
 		
 		//Path-a fitxategiarekin lotzen da ikusteko ea existitzen den edo ez
-		String fitxategiaPatharekin = path + "/" + fitxategia;
+		String fitxategiaPatharekin = path + "\\" + fitxategia;
 		
 		//Fitxategia existitzen den edo ez ikusten da
 		File file = new File(fitxategiaPatharekin);
@@ -76,15 +76,36 @@ public class FitxategiGordetzailea {
 		//Fitxategiaren path-a ondo esleitu dela adierazten duen aldagia
 		boolean ondoEsleituDa = false;
 		
-		//TODO:
+		//Konprobatu nahi den patha
+		String pathKonprobatu = path + "\\" + fitxategiIzena;
+				
 		//Fitxategia existitzen ez baldin bada
 		if(!fitxategiaExistitzenAlDa(path, fitxategiIzena)){
 			
 			//Path-a aldagai pribatuan gordeko da, dagokion erabiltzaile-izenari lotuta
-			fitxategiarenPatha.put(username, path + "/" + fitxategiIzena);
+			fitxategiarenPatha.put(username, pathKonprobatu);
+			System.out.println(pathKonprobatu);
+			
+			//fitxategia sortzen da
+			File fitx = new File(fitxategiarenPatha.get(username));
+			try {
+				fitx.createNewFile();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			
+			ondoEsleituDa = true;
+		}
+		
+		//Fitxategia existitzen bada baina erablitzaileak esleituta duena baldin bada
+		
+		else if(fitxategiaExistitzenAlDa(path, fitxategiIzena) && pathKonprobatu.equals(fitxategiarenPatha.get(username))){
+			
 			ondoEsleituDa = true;
 		}
 					
+		System.out.println("esleitu --> " + ondoEsleituDa);
 			
 		return ondoEsleituDa;
 		
@@ -114,7 +135,7 @@ public class FitxategiGordetzailea {
 			}
 			
 			catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		    

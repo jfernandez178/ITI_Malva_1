@@ -2,6 +2,8 @@ package org.iti.proiektua1_login;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +13,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import org.iti.proiektua1_datangraphics.DatanGraphicsInterfazea;
+import org.iti.proiektua1_menuNagusia.MenuNagusiaInterfazea;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 
 public class LoginInterfazea extends JFrame implements ActionListener{
 	
@@ -71,6 +75,9 @@ public class LoginInterfazea extends JFrame implements ActionListener{
 		//Login-aren logikaren kudeatzailearen instantzia lortzeko
 		loginLogika = LoginLogika.getLoginLogika();
 	}
+	
+	
+	
 
 	/*
 	 Interfazearen elementuak hasieratzen dituen metodoa 
@@ -95,7 +102,7 @@ public class LoginInterfazea extends JFrame implements ActionListener{
 		getContentPane().add(erabiltzaileaText);
 		erabiltzaileaText.setColumns(10);
 		
-		pasahitzaText = new JTextField();
+		pasahitzaText = new JPasswordField();
 		pasahitzaText.setBounds(166, 100, 270, 22);
 		getContentPane().add(pasahitzaText);
 		pasahitzaText.setColumns(10);
@@ -191,10 +198,12 @@ public class LoginInterfazea extends JFrame implements ActionListener{
 					
 					System.out.println("Ondo logeatu da!");
 					loginZuzena = true;
-					//TODO: Sesioa ireki eta erabiltzaileizena bidali parametro bezala fitxategietan gordetzeko jakiteko
-					//TODO Aldatu bi aukerak agertzeko
-					DatanGraphicsInterfazea datanGraphics = new DatanGraphicsInterfazea();
-					datanGraphics.setVisible(true);
+					
+					//Sesioa ireki eta erabiltzaile-izena bidali parametro bezala fitxategietan gordetzeko jakiteko, lehio hau itxiz
+					this.dispose();
+					MenuNagusiaInterfazea mni = new MenuNagusiaInterfazea(username);
+					mni.setVisible(true);
+					
 				}
 							
 				
@@ -258,6 +267,8 @@ public class LoginInterfazea extends JFrame implements ActionListener{
 			dialog.setLocationRelativeTo(null);
 			
 			dialog.setVisible(true);
+			
+			
 			
 		}
 		
