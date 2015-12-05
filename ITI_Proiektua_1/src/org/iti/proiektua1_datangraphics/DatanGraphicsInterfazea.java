@@ -42,8 +42,11 @@ public class DatanGraphicsInterfazea extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				aurrekoa();
-				
+				if (datanGraphicsLogika.lehenengoPosizioa()){
+					dispose();
+				}else{
+					aurrekoa();
+				}
 			}
 		});
 		
