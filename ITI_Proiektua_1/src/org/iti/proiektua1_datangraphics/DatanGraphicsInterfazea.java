@@ -23,6 +23,8 @@ public class DatanGraphicsInterfazea extends JFrame{
 	private DatanGraphicsLogika datanGraphicsLogika;
 	private JTextArea textAreaCodigo;
 	private JTextArea textAreaExplicacion;
+	private JButton btnSiguiente;
+	private JButton btnSalirAtras;
 	
 	public DatanGraphicsInterfazea() {
 		
@@ -33,7 +35,7 @@ public class DatanGraphicsInterfazea extends JFrame{
 		getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnSalirAtras = new JButton("Salir");
+		btnSalirAtras = new JButton("Salir");
 		panel.add(btnSalirAtras, BorderLayout.WEST);
 		btnSalirAtras.addActionListener(new ActionListener() {
 			
@@ -44,7 +46,7 @@ public class DatanGraphicsInterfazea extends JFrame{
 			}
 		});
 		
-		JButton btnSiguiente = new JButton("Siguiente");
+		btnSiguiente = new JButton("Siguiente");
 		panel.add(btnSiguiente, BorderLayout.CENTER);
 		
 		btnSiguiente.addActionListener(new ActionListener() {
@@ -105,13 +107,23 @@ public class DatanGraphicsInterfazea extends JFrame{
 	}
 	
 	private void hurrengoa(){
-		datanGraphicsLogika.hurrengoa();
+		if (datanGraphicsLogika.hurrengoa()){
+			btnSiguiente.setText("Ejecutar");
+		}else{
+			btnSiguiente.setText("Siguiente");
+		}
 		datuakKargatu();
+		btnSalirAtras.setText("Anterior");
 	}
 	
 	private void aurrekoa(){
-		datanGraphicsLogika.aurrekoa();
+		if (datanGraphicsLogika.aurrekoa()){
+			btnSalirAtras.setText("Salir");
+		}else{
+			btnSalirAtras.setText("Anterior");
+		}
 		datuakKargatu();
+		btnSiguiente.setText("Siguiente");
 	}
 	
 
