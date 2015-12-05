@@ -54,8 +54,11 @@ public class DatanGraphicsInterfazea extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				hurrengoa();
-				
+				if (datanGraphicsLogika.azkenengoPosizioa()){
+					datanGraphicsLogika.kodeaExekutatu();
+				}else{
+					hurrengoa();
+				}
 			}
 		});
 		
@@ -103,12 +106,17 @@ public class DatanGraphicsInterfazea extends JFrame{
 		
 	}
 	
-	
+	/**
+	 * Pausu honetako datuak textareatan kargatzen du
+	 */
 	private void datuakKargatu(){
 		textAreaCodigo.setText(datanGraphicsLogika.getKodeaString());
 		textAreaExplicacion.setText(datanGraphicsLogika.getAzalpenaString());
 	}
 	
+	/**
+	 * Hurrengo pausura pasatzen da
+	 */
 	private void hurrengoa(){
 		if (datanGraphicsLogika.hurrengoa()){
 			btnSiguiente.setText("Ejecutar");
@@ -119,6 +127,9 @@ public class DatanGraphicsInterfazea extends JFrame{
 		btnSalirAtras.setText("Anterior");
 	}
 	
+	/**
+	 * Aurreko pausura pasatzen da
+	 */
 	private void aurrekoa(){
 		if (datanGraphicsLogika.aurrekoa()){
 			btnSalirAtras.setText("Salir");

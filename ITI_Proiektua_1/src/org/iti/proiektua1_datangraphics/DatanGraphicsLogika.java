@@ -21,6 +21,8 @@ public class DatanGraphicsLogika {
 	
 	public DatanGraphicsLogika() throws SeparatuKopuruEzberdinException{
 		posizioa = 0;
+		
+		//Fitxategiak kargatu
 		kodeOsoa = getStringFitxategitik("E1Gr.java");
 		kodea = zatiakSeparatu(kodeOsoa);
 		azalpenOsoa = getStringFitxategitik("E1Gr.txt");
@@ -59,6 +61,22 @@ public class DatanGraphicsLogika {
 			posizioa = 0;
 		}
 		return (posizioa==0);
+	}
+	
+	/**
+	 * 
+	 * @return lehenengo posizioa den
+	 */
+	public boolean lehenengoPosizioa(){
+		return (posizioa==0);
+	}
+	
+	/**
+	 * 
+	 * @return azkenengo posizioa den
+	 */
+	public boolean azkenengoPosizioa(){
+		return (posizioa==kodea.length);
 	}
 	
 	/**
