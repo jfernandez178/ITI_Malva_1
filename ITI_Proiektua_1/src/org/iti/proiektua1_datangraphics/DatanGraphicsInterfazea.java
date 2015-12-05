@@ -15,6 +15,8 @@ import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DatanGraphicsInterfazea extends JFrame{
 	
@@ -33,9 +35,26 @@ public class DatanGraphicsInterfazea extends JFrame{
 		
 		JButton btnSalirAtras = new JButton("Salir");
 		panel.add(btnSalirAtras, BorderLayout.WEST);
+		btnSalirAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				aurrekoa();
+				
+			}
+		});
 		
 		JButton btnSiguiente = new JButton("Siguiente");
 		panel.add(btnSiguiente, BorderLayout.CENTER);
+		
+		btnSiguiente.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				hurrengoa();
+				
+			}
+		});
 		
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.CENTER);
@@ -84,5 +103,16 @@ public class DatanGraphicsInterfazea extends JFrame{
 		textAreaCodigo.setText(datanGraphicsLogika.getKodeaString());
 		textAreaExplicacion.setText(datanGraphicsLogika.getAzalpenaString());
 	}
+	
+	private void hurrengoa(){
+		datanGraphicsLogika.hurrengoa();
+		datuakKargatu();
+	}
+	
+	private void aurrekoa(){
+		datanGraphicsLogika.aurrekoa();
+		datuakKargatu();
+	}
+	
 
 }
