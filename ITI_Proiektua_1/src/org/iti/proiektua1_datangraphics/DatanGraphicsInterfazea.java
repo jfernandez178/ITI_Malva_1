@@ -51,6 +51,7 @@ public class DatanGraphicsInterfazea extends JFrame{
 		panel_2.add(lblNewLabel, BorderLayout.NORTH);
 		
 		textAreaCodigo = new JTextArea();
+		textAreaCodigo.setLineWrap(true);
 		panel_2.add(textAreaCodigo, BorderLayout.CENTER);
 		
 		JPanel panel_3 = new JPanel();
@@ -63,6 +64,7 @@ public class DatanGraphicsInterfazea extends JFrame{
 		panel_3.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		textAreaExplicacion = new JTextArea();
+		textAreaExplicacion.setLineWrap(true);
 		panel_3.add(textAreaExplicacion, BorderLayout.CENTER);
 		
 
