@@ -68,8 +68,15 @@ public class DatanGraphicsInterfazea extends JFrame{
 		panel_3.add(textAreaExplicacion, BorderLayout.CENTER);
 		
 
-		datanGraphicsLogika = new DatanGraphicsLogika();
-		datuakKargatu();
+		try {
+			datanGraphicsLogika = new DatanGraphicsLogika();
+			datuakKargatu();
+		} catch (SeparatuKopuruEzberdinException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(1);
+		}
+		
 	}
 	
 	

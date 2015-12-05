@@ -6,7 +6,7 @@ import java.util.*;
 import org.iti.proiektua1_datangraphics.datangraphics.DatanGraphics;
 
 import java.awt.*;
-   
+
 /**
 * Example demonstrating the basic methods of class DatanGrphics
 */

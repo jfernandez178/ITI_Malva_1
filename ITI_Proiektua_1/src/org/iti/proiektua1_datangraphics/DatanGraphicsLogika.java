@@ -19,7 +19,7 @@ public class DatanGraphicsLogika {
 	private String[] azalpena;
 	private int posizioa;
 	
-	public DatanGraphicsLogika(){
+	public DatanGraphicsLogika() throws SeparatuKopuruEzberdinException{
 		posizioa = 0;
 		kodeOsoa = getStringFitxategitik("E1Gr.java");
 		kodea = zatiakSeparatu(kodeOsoa);
@@ -29,6 +29,12 @@ public class DatanGraphicsLogika {
 		//Separatu kendu
 		azalpenOsoa = azalpenOsoa.replaceAll("//separatu", "");
 		kodeOsoa = kodeOsoa.replaceAll("//separatu", "");
+		
+		//Konprobatu separatu kopuru berdina dela
+		if (azalpena.length != kodea.length){
+			throw new SeparatuKopuruEzberdinException();
+		}
+		
 	}
 	
 	/**
@@ -37,7 +43,22 @@ public class DatanGraphicsLogika {
 	 */
 	public boolean hurrengoa(){
 		posizioa++;
+		if (posizioa > kodea.length){
+			posizioa = kodea.length;
+		}
 		return (posizioa==kodea.length);
+	}
+	
+	/**
+	 * Aurreko posiziora pasatzen da
+	 * @return lehenengo posizioa den
+	 */
+	public boolean aurrekoa(){
+		posizioa--;
+		if (posizioa < 0){
+			posizioa = 0;
+		}
+		return (posizioa==0);
 	}
 	
 	/**
