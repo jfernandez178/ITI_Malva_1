@@ -230,7 +230,7 @@ public class MenuNagusiaInterfazea extends JFrame implements ActionListener {
 					
 					//datangraphics aukera irekitzen da
 					
-					DatanGraphicsInterfazea dgi = new DatanGraphicsInterfazea();
+					DatanGraphicsInterfazea dgi = new DatanGraphicsInterfazea(username);
 					dgi.setVisible(true);
 				}
 				else{
