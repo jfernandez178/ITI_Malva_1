@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import java.awt.GridLayout;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+
+import org.iti.proiektua1_fitxategiGordetzailea.FitxategiGordetzailea;
+
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.BorderFactory;
@@ -21,13 +24,18 @@ import java.awt.event.ActionListener;
 
 public class DatanGraphicsInterfazea extends JFrame{
 	
+	private String username;
+	
 	private DatanGraphicsLogika datanGraphicsLogika;
 	private JTextArea textAreaCodigo;
 	private JTextArea textAreaExplicacion;
 	private JButton btnSiguiente;
 	private JButton btnSalirAtras;
 	
-	public DatanGraphicsInterfazea() {
+	public DatanGraphicsInterfazea(String pUsername) {
+		
+		username = pUsername;
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha iniciado el tutorial DatanGraphics\n", username);
 		
 		setSize(600, 600);
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -43,8 +51,10 @@ public class DatanGraphicsInterfazea extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (datanGraphicsLogika.lehenengoPosizioa()){
+					FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha salido del tutorial DatanGraphics\n", username);
 					dispose();
 				}else{
+					FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha dado un paso atras en el tutorial DatanGraphics\n", username);
 					aurrekoa();
 				}
 			}
@@ -58,8 +68,10 @@ public class DatanGraphicsInterfazea extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (datanGraphicsLogika.azkenengoPosizioa()){
+					FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha terminado el tutorial y ha ejecutado el código\n", username);
 					datanGraphicsLogika.kodeaExekutatu();
 				}else{
+					FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario esta en el siguiente paso del tutorial DatanGraphics\n", username);
 					hurrengoa();
 				}
 			}
@@ -142,6 +154,4 @@ public class DatanGraphicsInterfazea extends JFrame{
 		datuakKargatu();
 		btnSiguiente.setText("Siguiente");
 	}
-	
-
 }

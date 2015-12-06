@@ -129,8 +129,11 @@ public class FitxategiGordetzailea {
 			BufferedWriter bw;
 			
 			try {
-				bw = new BufferedWriter(new FileWriter(fitxategia));
+				// File writer-eko true parametroak fitxategiari gehitu egingo dio berridatzi beharrean
+				bw = new BufferedWriter(new FileWriter(fitxategia, true));
 				bw.write(textua);
+				// Lerro berri bat sortuko da
+				bw.newLine();
 			    bw.close();
 			}
 			
