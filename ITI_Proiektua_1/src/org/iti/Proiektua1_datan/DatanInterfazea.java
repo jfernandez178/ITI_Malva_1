@@ -10,8 +10,8 @@ import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import javax.swing.JTextArea;
 
+import org.iti.Proiektua1_Utility.SeparatuKopuruEzberdinException;
 import org.iti.proiektua1_datangraphics.DatanGraphicsLogika;
-import org.iti.proiektua1_datangraphics.SeparatuKopuruEzberdinException;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -26,7 +26,7 @@ public class DatanInterfazea extends JFrame {
 	private JTextArea textCodigo;
 	private JTextArea textExplic;
 	private int pos;
-	private int max;
+	private boolean heldu;
 	
 	
 	public DatanInterfazea() {
@@ -44,33 +44,38 @@ public class DatanInterfazea extends JFrame {
 				System.exit(ERROR);
 		}
 		
-
+		pos = 0;
+		heldu=false;
 		
 		JPanel panelBtn = new JPanel();
 		getContentPane().add(panelBtn, BorderLayout.SOUTH);
 		panelBtn.setLayout(new BorderLayout(0, 0));
 		
-		btnSalir = new JButton("Salir");
+		btnSalir = new JButton("Irten");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				datanLogika.getPos();
 				//en caso de que pos este en la posicion inicial, vease la pantalla 1 se cerrará esta ventana
-				if(pos == 0){
+				if(pos <= 0){
+					datanLogika.eguneroko("Irten Sakatu");
+					datanLogika.egunerokoaItxi();
 					dispose();
 				}else{//en caso contrario se volvera una ventana atras, reduciendo el valor de pos y llamando a aurreko para actualizar los valores
-					pos--;
+					datanLogika.actPos(false);
 					aurreko();
 				}
 			}
 		});
 		panelBtn.add(btnSalir, BorderLayout.WEST);
 		
-		btnSiguiente = new JButton("Siguiente");
+		btnSiguiente = new JButton("Aurrera");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(pos == max){
+				pos = datanLogika.getPos();
+				if(pos == -2){
 					exekutatu();
 				}else{
-					pos ++;
+					datanLogika.actPos(true);
 					hurrengo();
 				}
 			}
@@ -85,7 +90,7 @@ public class DatanInterfazea extends JFrame {
 		panelCentro.add(panelCodigo);
 		panelCodigo.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblCodigo = new JLabel("Codigo");
+		JLabel lblCodigo = new JLabel("Kodea");
 		panelCodigo.add(lblCodigo, BorderLayout.NORTH);
 		
 		JScrollPane scrollCodigo = new JScrollPane();
@@ -98,7 +103,7 @@ public class DatanInterfazea extends JFrame {
 		panelCentro.add(panelExplic);
 		panelExplic.setLayout(new BorderLayout(0, 0));
 		
-		lblExplic = new JLabel("Explicacion");
+		lblExplic = new JLabel("Azalpena");
 		panelExplic.add(lblExplic, BorderLayout.NORTH);
 		
 		JScrollPane scrollExplic = new JScrollPane();
@@ -109,15 +114,41 @@ public class DatanInterfazea extends JFrame {
 	}
 	
 	private void aurreko(){
-		
+		datanLogika.getPos();
+		String[] textuak;
+		textuak = datanLogika.textuakHartu(pos);
+		textCodigo.setText(textuak[0]);
+		textExplic.setText(textuak[1]);
+		if(heldu){
+			btnSiguiente.setText("Aurrera");
+			heldu = false;
+		}
+		if(pos == 0){
+			btnSalir.setText("Irten");
+		}
+		datanLogika.eguneroko("Atzera Sakatu");
 	}
 	
 	private void hurrengo(){
-		
+		datanLogika.getPos();
+		String[] textuak;
+		textuak = datanLogika.textuakHartu(pos);
+		textCodigo.setText(textuak[0]);
+		textExplic.setText(textuak[1]);
+		if(pos == -2){
+			btnSiguiente.setText("Exekutatu");
+			heldu = true;
+		}else{
+			if(pos == 1){
+				btnSalir.setText("Atzera");
+			}
+		}
+		datanLogika.eguneroko("Hurrengo Sakatu");
 	}
 	
 	private void exekutatu(){
-		
+		datanLogika.eguneroko("Exekutatu Sakatu");
+		datanLogika.egunerokoaItxi();
 	}
 
 }

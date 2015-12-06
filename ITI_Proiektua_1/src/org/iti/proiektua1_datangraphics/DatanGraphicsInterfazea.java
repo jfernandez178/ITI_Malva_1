@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 
+import org.iti.Proiektua1_Utility.SeparatuKopuruEzberdinException;
 import org.iti.proiektua1_fitxategiGordetzailea.FitxategiGordetzailea;
 
 import javax.swing.JButton;
