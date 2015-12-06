@@ -142,6 +142,4 @@ public class DatanGraphicsInterfazea extends JFrame{
 		datuakKargatu();
 		btnSiguiente.setText("Siguiente");
 	}
-	
-
 }
