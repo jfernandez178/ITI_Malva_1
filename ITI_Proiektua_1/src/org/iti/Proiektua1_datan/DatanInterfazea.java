@@ -30,6 +30,7 @@ public class DatanInterfazea extends JFrame {
 	private String username;
 	private int pos;
 	private boolean heldu;
+	private int maxOrri;
 	
 	
 	public DatanInterfazea(String pUsername) {
@@ -59,11 +60,10 @@ public class DatanInterfazea extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				datanLogika.getPos();
 				//en caso de que pos este en la posicion inicial, vease la pantalla 1 se cerrará esta ventana
-				if(pos <= 0){
+				if(pos == 0){
 					FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha salido del tutorial Datan\n", username);
 					dispose();
 				}else{//en caso contrario se volvera una ventana atras, reduciendo el valor de pos y llamando a aurreko para actualizar los valores
-					datanLogika.actPos(false);
 					aurreko();
 				}
 			}
@@ -74,10 +74,9 @@ public class DatanInterfazea extends JFrame {
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				pos = datanLogika.getPos();
-				if(pos == -2){
+				if(pos+1 == maxOrri){
 					exekutatu();
-				}else{
-					datanLogika.actPos(true);
+				}else{					
 					hurrengo();
 				}
 			}
@@ -116,14 +115,15 @@ public class DatanInterfazea extends JFrame {
 		
 		String[] textuak = new String[2];
 	    textuak = datanLogika.textuakHartu(pos);
-	    System.out.println(textuak[0]);
-	    textCodigo.setText(textuak[0]);
+	    	    textCodigo.setText(textuak[0]);
 	    textExplic.setText(textuak[1]);
 		
+	    maxOrri = datanLogika.getMaxOrri();
 	}
 	
 	private void aurreko(){
-		datanLogika.getPos();
+		datanLogika.actPos(false);
+		pos = datanLogika.getPos();
 		String[] textuak;
 		textuak = datanLogika.textuakHartu(pos);
 		textCodigo.setText(textuak[0]);
@@ -139,13 +139,14 @@ public class DatanInterfazea extends JFrame {
 	}
 	
 	private void hurrengo(){
+		datanLogika.actPos(true);
 		pos = datanLogika.getPos();
 		String[] textuak;
 		textuak = datanLogika.textuakHartu(pos);
 		textCodigo.setText(textuak[0]);
 		textExplic.setText(textuak[1]);
-		if(pos == -2){
-			btnSiguiente.setText("Exekutatu");
+		if(pos+1 == maxOrri){
+			btnSiguiente.setText("Exekutatu");;
 			heldu = true;
 		}else{
 			if(pos == 1){

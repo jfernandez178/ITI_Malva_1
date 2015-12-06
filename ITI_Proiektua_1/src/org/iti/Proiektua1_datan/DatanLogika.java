@@ -53,7 +53,6 @@ public void azalpenaZatitu(String banatzaile){
 
 public String[] textuakHartu(int pos){
 	String[] textuak =  new String[2];
-	System.out.println(lineasKod[pos]);
 	textuak[0] = lineasKod[pos];
 	textuak[1] = lineasExp[pos];
 	
@@ -66,21 +65,20 @@ public int getPos(){
 }
 //función para actualizar el valor de la posicion
 public void actPos(boolean mas){
-	if(mas){
+	if(mas == true){
 		pos ++;
-		if(pos >lineasKod.length){
-			pos = -2;
-		}
+		
 	}else{
 		pos --;
-		if(pos< 0){
-			pos = -1;
-		}
+		
 	}
 }
 //se ejecuta la funcion E8Mtx
 public void exekutatu(){
 	new E8Mtx();
+}
+public int getMaxOrri(){
+	return lineasKod.length;
 }
 
 	
