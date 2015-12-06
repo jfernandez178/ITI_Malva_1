@@ -2,6 +2,7 @@ package org.iti.Proiektua1_datan;
 
 import org.iti.Proiektua1_Utility.FitxeroUtil;
 import org.iti.Proiektua1_Utility.SeparatuKopuruEzberdinException;
+import org.iti.proiektua1_datangraphics.examples.E8Mtx;
 
 public class DatanLogika {
 
@@ -11,21 +12,19 @@ public class DatanLogika {
 	private String[] lineasExp;
 	private int pos;
 	private String spliZati;
-	private String[] eguneroko;
-	private int egunPos;
 	
 public DatanLogika() throws SeparatuKopuruEzberdinException{
 		pos = 0;
 		//se define el string con el que se hará el split de el fllcodigo y el fullexplicacion
 		spliZati = "//Zatileku";
 		//Code Artxiboa Kargatu
-		fullKodigo = getFitxategi("");
+		fullKodigo = getFitxategi("E8Mtx.java");
 		//Azalpen Artxiboa Kargatu
-	    fullExplic = getFitxategi("");
+	    fullExplic = getFitxategi("E8Mtx.txt");
 		//Codea Zatitu
-		kodeaZatitu(fullKodigo);
+		kodeaZatitu(spliZati);
 		//Azalpena Zatitu
-		azalpenaZatitu(fullExplic);
+		azalpenaZatitu(spliZati);
 		
 		if(lineasKod.length != lineasExp.length){
 			
@@ -34,7 +33,7 @@ public DatanLogika() throws SeparatuKopuruEzberdinException{
 		
 	
 	}
-
+//se llama a fitxeroutil para obtener el fichero y guardarlo en las variables globales
 private String getFitxategi(String fitxategiIzena){
 		String kodea;
 		FitxeroUtil fitx = new FitxeroUtil();
@@ -51,8 +50,10 @@ public void azalpenaZatitu(String banatzaile){
 	lineasExp = fullExplic.split(banatzaile);
 }
 //esta función sirve para obtener la línea del codigo que se desee y su correspondiente explicacion. Pos indica que línea se desea
+
 public String[] textuakHartu(int pos){
-	String[] textuak = null;
+	String[] textuak =  new String[2];
+	System.out.println(lineasKod[pos]);
 	textuak[0] = lineasKod[pos];
 	textuak[1] = lineasExp[pos];
 	
@@ -67,7 +68,7 @@ public int getPos(){
 public void actPos(boolean mas){
 	if(mas){
 		pos ++;
-		if(pos >fullKodigo.length()){
+		if(pos >lineasKod.length){
 			pos = -2;
 		}
 	}else{
@@ -77,18 +78,10 @@ public void actPos(boolean mas){
 		}
 	}
 }
-
+//se ejecuta la funcion E8Mtx
 public void exekutatu(){
-	
-}
-//Guarda las acciones que hace el usuario
-public void eguneroko(String ekintza){
-	eguneroko[egunPos] = ekintza;	
+	new E8Mtx();
 }
 
-//Pasa el diario de acciones a un documento
-public void egunerokoaItxi(){
-	
-}
 	
 }

@@ -208,7 +208,7 @@ public class MenuNagusiaInterfazea extends JFrame implements ActionListener {
 				if(fitxategiGordetzailea.fitxategiaGordetzekoDirektorioaEsleitu(pathText.getText(), fitxategiText.getText(), username)){
 					
 					//TODO:datan aukera irekitzen da
-					DatanInterfazea dti = new DatanInterfazea();
+					DatanInterfazea dti = new DatanInterfazea(username);
 					dti.setVisible(true);
 					
 					System.out.println("datan ongi!");

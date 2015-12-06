@@ -12,6 +12,8 @@ import javax.swing.JTextArea;
 
 import org.iti.Proiektua1_Utility.SeparatuKopuruEzberdinException;
 import org.iti.proiektua1_datangraphics.DatanGraphicsLogika;
+import org.iti.proiektua1_datangraphics.examples.E8Mtx;
+import org.iti.proiektua1_fitxategiGordetzailea.FitxategiGordetzailea;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -25,11 +27,12 @@ public class DatanInterfazea extends JFrame {
 	private JButton btnSiguiente;
 	private JTextArea textCodigo;
 	private JTextArea textExplic;
+	private String username;
 	private int pos;
 	private boolean heldu;
 	
 	
-	public DatanInterfazea() {
+	public DatanInterfazea(String pUsername) {
 		
 		setSize(600,600);
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -43,10 +46,10 @@ public class DatanInterfazea extends JFrame {
 				System.out.println("Existe disparidad entre el conto de codigo y de explicaciones");
 				System.exit(ERROR);
 		}
-		
+		username = pUsername;
 		pos = 0;
 		heldu=false;
-		
+	
 		JPanel panelBtn = new JPanel();
 		getContentPane().add(panelBtn, BorderLayout.SOUTH);
 		panelBtn.setLayout(new BorderLayout(0, 0));
@@ -57,8 +60,7 @@ public class DatanInterfazea extends JFrame {
 				datanLogika.getPos();
 				//en caso de que pos este en la posicion inicial, vease la pantalla 1 se cerrará esta ventana
 				if(pos <= 0){
-					datanLogika.eguneroko("Irten Sakatu");
-					datanLogika.egunerokoaItxi();
+					FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha salido del tutorial Datan\n", username);
 					dispose();
 				}else{//en caso contrario se volvera una ventana atras, reduciendo el valor de pos y llamando a aurreko para actualizar los valores
 					datanLogika.actPos(false);
@@ -111,6 +113,13 @@ public class DatanInterfazea extends JFrame {
 		
 		textExplic = new JTextArea();
 		scrollExplic.setViewportView(textExplic);
+		
+		String[] textuak = new String[2];
+	    textuak = datanLogika.textuakHartu(pos);
+	    System.out.println(textuak[0]);
+	    textCodigo.setText(textuak[0]);
+	    textExplic.setText(textuak[1]);
+		
 	}
 	
 	private void aurreko(){
@@ -126,11 +135,11 @@ public class DatanInterfazea extends JFrame {
 		if(pos == 0){
 			btnSalir.setText("Irten");
 		}
-		datanLogika.eguneroko("Atzera Sakatu");
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha pulsado atras en el tutorial DatanGraphics\n", username);
 	}
 	
 	private void hurrengo(){
-		datanLogika.getPos();
+		pos = datanLogika.getPos();
 		String[] textuak;
 		textuak = datanLogika.textuakHartu(pos);
 		textCodigo.setText(textuak[0]);
@@ -143,12 +152,12 @@ public class DatanInterfazea extends JFrame {
 				btnSalir.setText("Atzera");
 			}
 		}
-		datanLogika.eguneroko("Hurrengo Sakatu");
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha pulsado siquiente en el tutorial Datan\n", username);
 	}
 	
 	private void exekutatu(){
-		datanLogika.eguneroko("Exekutatu Sakatu");
-		datanLogika.egunerokoaItxi();
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha acabado el tutorial Datan", username);
+		datanLogika.exekutatu();
 	}
 
 }

@@ -1,0 +1,33 @@
+
+The program consists of two nested loops.
+//Zatileku
+
+The outer loop runs through the
+cases 1, 2, 3, the inner loop through the subcases a, b, c.
+//Zatileku
+
+For each case the matrix A
+is composed of individual vectors
+//Zatileku
+
+In the subcase b two of these vectors are chosen
+to be identical.
+//Zatileku
+
+In case 3 with m = 2 and n = 3, the matrix A is extended to become a 3×3 matrix by
+addition of another row the elements, of which are all set to zero, and correspondingly
+m is set to 3.
+//Zatileku
+
+If the singular value analysis shows that one or several singular values are
+smaller than the fraction f of the largest singular value, then they are set to zero.
+//Zatileku
+
+For each of the 9 cases the analysis is performed twice, first
+for f = 10−15 and then for f = 10−10. For f = 10−15 in our example cases 1c, 2c,
+3c the matrix A has full rank, in spite of the small value of ε = 10−12. the singular
+value analysis with f = 10−10 reduces the number of singular values.
+//Zatileku
+
+The unwieldly numerical values in the case of f = 10−15 show that we are near the
+limits of numerical stability
