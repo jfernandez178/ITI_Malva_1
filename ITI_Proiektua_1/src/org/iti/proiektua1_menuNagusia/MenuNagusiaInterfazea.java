@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import org.iti.Proiektua1_datan.DatanInterfazea;
 import org.iti.proiektua1_datangraphics.DatanGraphicsInterfazea;
 import org.iti.proiektua1_fitxategiGordetzailea.FitxategiGordetzailea;
 import org.iti.proiektua1_login.LoginInterfazea;
@@ -207,6 +208,9 @@ public class MenuNagusiaInterfazea extends JFrame implements ActionListener {
 				if(fitxategiGordetzailea.fitxategiaGordetzekoDirektorioaEsleitu(pathText.getText(), fitxategiText.getText(), username)){
 					
 					//TODO:datan aukera irekitzen da
+					DatanInterfazea dti = new DatanInterfazea();
+					dti.setVisible(true);
+					
 					System.out.println("datan ongi!");
 				}
 				else{
