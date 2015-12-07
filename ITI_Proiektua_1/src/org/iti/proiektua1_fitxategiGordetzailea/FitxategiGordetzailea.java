@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 public class FitxategiGordetzailea {
@@ -131,6 +133,8 @@ public class FitxategiGordetzailea {
 			try {
 				// File writer-eko true parametroak fitxategiari gehitu egingo dio berridatzi beharrean
 				bw = new BufferedWriter(new FileWriter(fitxategia, true));
+				// Ordua eta data ezartzen du
+				bw.write("[" + getCurrentTimeStamp() + "]:");
 				bw.write(textua);
 				// Lerro berri bat sortuko da
 				bw.newLine();
@@ -148,6 +152,17 @@ public class FitxategiGordetzailea {
 		
 		return ondoGordeDa;
 		
+	}
+	
+	/**
+	 * 
+	 * @return oraingo data eta fetxa
+	 */
+	public static String getCurrentTimeStamp() {
+	    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
+	    Date now = new Date();
+	    String strDate = sdfDate.format(now);
+	    return strDate;
 	}
 
 }

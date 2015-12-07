@@ -135,7 +135,7 @@ public class DatanInterfazea extends JFrame {
 		if(pos == 0){
 			btnSalir.setText("Irten");
 		}
-		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha pulsado atras en el tutorial DatanGraphics\n", username);
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha pulsado atras en el tutorial Datan\n", username);
 	}
 	
 	private void hurrengo(){
@@ -154,6 +154,10 @@ public class DatanInterfazea extends JFrame {
 			}
 		}
 		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("El usuario ha pulsado siquiente en el tutorial Datan\n", username);
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("Código:", username);
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde(textuak[0], username);
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("Explicación:", username);
+		FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde(textuak[1], username);
 	}
 	
 	private void exekutatu(){

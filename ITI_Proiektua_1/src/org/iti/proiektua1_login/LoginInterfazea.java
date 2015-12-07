@@ -63,7 +63,7 @@ public class LoginInterfazea extends JFrame implements ActionListener{
 	public LoginInterfazea(){
 		
 		super();
-		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//Interfazearen elementuak hasieratzen dira
 		sortu();
 		this.setVisible(true);
