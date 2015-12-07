@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.iti.Proiektua1_Utility.FitxeroUtil;
+import org.iti.Proiektua1_Utility.SeparatuKopuruEzberdinException;
 import org.iti.proiektua1_datangraphics.examples.E1Gr;
 
 public class DatanGraphicsLogika {
@@ -125,20 +127,10 @@ public class DatanGraphicsLogika {
 	 * @return String bat fitxategiaren edukiarekin
 	 */
 	private String getStringFitxategitik(String fitxategiIzena){
-		try {
-			String path = "src" + File.separatorChar + "org" + File.separatorChar + "iti" + File.separatorChar + "proiektua1_datangraphics" + File.separatorChar + "examples" + File.separatorChar;
-			List<String> lines = Files.readAllLines(Paths.get(path + fitxategiIzena), Charset.defaultCharset());
-			String kodea = "";
-			Iterator<String> itr = lines.iterator();
-			while (itr.hasNext()){
-				kodea = kodea + "\n" + itr.next();
-			}
-			return kodea;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		String kodea;
+		FitxeroUtil fitx = new FitxeroUtil();
+		kodea = fitx.getStringFitxategitik(fitxategiIzena);
+		return kodea;
 	}
 	
 }

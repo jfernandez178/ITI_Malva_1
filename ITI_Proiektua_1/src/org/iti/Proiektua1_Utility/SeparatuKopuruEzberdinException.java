@@ -1,4 +1,4 @@
-package org.iti.proiektua1_datangraphics;
+package org.iti.Proiektua1_Utility;
 
 public class SeparatuKopuruEzberdinException extends Exception{
 
