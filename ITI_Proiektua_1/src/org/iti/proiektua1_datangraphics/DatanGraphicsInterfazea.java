@@ -112,7 +112,7 @@ public class DatanGraphicsInterfazea extends JFrame{
 
 		try {
 			datanGraphicsLogika = new DatanGraphicsLogika();
-			datuakKargatu();
+			datuakKargatu(true);
 		} catch (SeparatuKopuruEzberdinException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,9 +124,16 @@ public class DatanGraphicsInterfazea extends JFrame{
 	/**
 	 * Pausu honetako datuak textareatan kargatzen du
 	 */
-	private void datuakKargatu(){
+	private void datuakKargatu(boolean aurrera){
 		textAreaCodigo.setText(datanGraphicsLogika.getKodeaString());
 		textAreaExplicacion.setText(datanGraphicsLogika.getAzalpenaString());
+		if (aurrera){
+			// Fitxategian gorde
+			FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("Código:", username);
+			FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde(datanGraphicsLogika.getKodeaString(), username);
+			FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde("Explicación:", username);
+			FitxategiGordetzailea.getFitxategiGordetzailea().fitxategianGorde(datanGraphicsLogika.getAzalpenaString(), username);
+		}
 	}
 	
 	/**
@@ -138,7 +145,7 @@ public class DatanGraphicsInterfazea extends JFrame{
 		}else{
 			btnSiguiente.setText("Siguiente");
 		}
-		datuakKargatu();
+		datuakKargatu(true);
 		btnSalirAtras.setText("Anterior");
 	}
 	
@@ -151,7 +158,7 @@ public class DatanGraphicsInterfazea extends JFrame{
 		}else{
 			btnSalirAtras.setText("Anterior");
 		}
-		datuakKargatu();
+		datuakKargatu(false);
 		btnSiguiente.setText("Siguiente");
 	}
 }
